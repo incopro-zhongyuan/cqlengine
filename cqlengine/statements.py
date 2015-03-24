@@ -79,7 +79,7 @@ class BaseClause(UnicodeMixin):
     def update_context(self, ctx):
         """ updates the query context with this clauses values """
         assert isinstance(ctx, dict)
-        ctx[str(self.context_id)] = self.value
+        ctx[str(self.context_id)] = self.value.value if hasattr(self.value, 'value') else self.value
 
 
 class WhereClause(BaseClause):
